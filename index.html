@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Mary</title>
+    <title>For Maryam</title>
     <style>
         /* --- CORE STYLES --- */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Verdana', sans-serif;
-            background-color: #ffc1e3; /* Pink base */
-            /* Pink stripes pattern */
-            background-image: repeating-linear-gradient(
-                45deg,
-                #ffc1e3 0,
-                #ffc1e3 20px,
-                #ffd1ea 20px,
-                #ffd1ea 40px
-            );
-            color: #000;
+            /* MAIN BACKGROUND IS NOW BLACK */
+            background-color: #000000; 
+            color: #fff;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* --- THE ENVELOPE (OPENER) --- */
+        /* --- THE ENVELOPE OPENER (Kept Pink for contrast reveal) --- */
         #opener-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: #ffc1e3;
+            /* Pink stripes for the opener */
+            background-color: #ffc1e3;
+            background-image: repeating-linear-gradient(45deg, #ffc1e3 0, #ffc1e3 20px, #ffd1ea 20px, #ffd1ea 40px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -52,18 +47,11 @@
             transform: scale(1.1) rotate(-3deg);
         }
 
-        /* Envelope Flap */
         .envelope::after {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0; 
-            height: 0; 
-            border-left: 71px solid transparent;
-            border-right: 71px solid transparent;
-            border-top: 50px solid #000; /* Looks like a flap */
-            transform-origin: top;
+            position: absolute; top: 0; left: 0; width: 0; height: 0; 
+            border-left: 71px solid transparent; border-right: 71px solid transparent;
+            border-top: 50px solid #000;
         }
         
         .envelope-text {
@@ -71,7 +59,7 @@
             font-family: 'Courier New', monospace;
             font-weight: bold;
             font-size: 1.2rem;
-            background: #fff;
+            background: #fff; color: #000;
             padding: 5px 10px;
             border: 2px solid #000;
             box-shadow: 4px 4px 0 #000;
@@ -79,7 +67,7 @@
 
         /* --- MAIN CONTENT (HIDDEN INITIALLY) --- */
         #main-content {
-            display: none; /* Hidden until clicked */
+            display: none;
             opacity: 0;
             transform: scale(0.8);
             transition: all 0.8s ease-out;
@@ -88,49 +76,57 @@
             text-align: center;
             padding: 20px;
             position: relative;
+            z-index: 10;
         }
 
-        /* --- FLOATING ELEMENTS --- */
+        /* --- FLOATING ELEMENTS (Updated for Maryam & Disney) --- */
         .floater {
             position: absolute;
             font-weight: bold;
             font-family: 'Comic Sans MS', cursive;
             z-index: -1;
-            opacity: 0.6;
+            opacity: 0.8;
             animation: floatAnim 4s ease-in-out infinite;
+            text-shadow: 2px 2px 4px #000; /* Shadow to make them pop on black */
         }
         
-        /* Specific Positions for Mary & Hearts */
-        .f-m { top: 10%; left: 5%; font-size: 4rem; color: #ff0055; animation-delay: 0s; }
-        .f-a { top: 20%; right: 10%; font-size: 3rem; color: #8800cc; animation-delay: 1s; }
-        .f-r { top: 60%; left: 0%; font-size: 5rem; color: #0044ff; animation-delay: 2s; }
-        .f-y { top: 80%; right: 5%; font-size: 4rem; color: #ff6600; animation-delay: 0.5s; }
+        /* Positioning M-A-R-Y-A-M */
+        .f-m1 { top: 5%; left: 5%; font-size: 4rem; color: #ff0055; animation-delay: 0s; }
+        .f-a1 { top: 15%; right: 15%; font-size: 3rem; color: #8800cc; animation-delay: 1s; }
+        .f-r { top: 30%; left: 2%; font-size: 5rem; color: #0044ff; animation-delay: 2s; }
+        .f-y { top: 50%; right: 5%; font-size: 4rem; color: #ff6600; animation-delay: 0.5s; }
+        .f-a2 { bottom: 25%; left: 10%; font-size: 3rem; color: #00ff99; animation-delay: 1.2s; }
+        .f-m2 { bottom: 5%; right: 20%; font-size: 4rem; color: #ffff00; animation-delay: 2.2s; }
         
-        .heart-1 { top: 5%; right: 30%; font-size: 2rem; animation-delay: 1.5s; }
-        .heart-2 { top: 40%; left: 10%; font-size: 3rem; animation-delay: 2.5s; }
-        .heart-3 { bottom: 10%; left: 40%; font-size: 2.5rem; animation-delay: 0.2s; }
+        /* Positioning Disney & Hearts */
+        .princess-1 { top: 10%; right: 30%; font-size: 3rem; animation-delay: 1.5s; } /* Mermaid */
+        .princess-2 { top: 40%; left: 15%; font-size: 3rem; animation-delay: 2.5s; } /* Rose */
+        .princess-3 { bottom: 15%; left: 40%; font-size: 3rem; animation-delay: 0.2s; } /* Shoe */
+        .princess-4 { top: 60%; left: -5%; font-size: 3rem; animation-delay: 3s; } /* Crown */
+        .heart-1 { top: 20%; left: 40%; font-size: 2rem; animation-delay: 0.7s; }
 
         @keyframes floatAnim {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(10deg); }
         }
 
-        /* --- CONTENT STYLING (NEO-BRUTALISM) --- */
+        /* --- CONTENT STYLING (Adjusted for Black Background) --- */
+        /* The white boxes need neon borders to pop against black */
         .speech-bubble {
             background: #fff;
-            border: 3px solid #000;
+            color: #000;
+            border: 3px solid #ff4081; /* Neon pink border */
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 6px 6px 0px #000;
+            box-shadow: 6px 6px 0px #fff; /* White shadow */
             display: inline-block;
             margin-bottom: 30px;
             position: relative;
             transform: rotate(-1deg);
-            z-index: 2;
         }
         
         .decor-block {
-            width: 40px; height: 20px; background: #ff4081; border: 3px solid #000;
+            width: 40px; height: 20px; background: #00ff99; border: 3px solid #000;
             position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
         }
 
@@ -140,52 +136,57 @@
             margin: 20px 0;
             letter-spacing: -2px;
             text-transform: uppercase;
-            color: #000;
-            text-shadow: 3px 3px 0px #fff;
+            color: #fff;
+            /* Glitch effect with neon pink and blue split */
+            text-shadow: -3px 0px 0px #ff0055, 3px 0px 0px #0044ff;
         }
 
         p.desc {
             font-family: 'Courier New', monospace;
             font-size: 1.1rem;
             line-height: 1.6;
-            background: rgba(255,255,255,0.7);
+            background: #fff; /* White background for readability */
+            color: #000;
             padding: 15px;
-            border: 2px dashed #000;
+            border: 2px dashed #ff4081;
+            box-shadow: 4px 4px 0px #fff;
             transform: rotate(1deg);
         }
 
         .btn {
-            background: #000;
+            background: #ff4081;
             color: #fff;
             padding: 15px 30px;
             font-family: 'Courier New', monospace;
             font-weight: bold;
             font-size: 1.2rem;
             cursor: pointer;
-            border: none;
-            box-shadow: 5px 5px 0px #ff4081;
+            border: 2px solid #fff;
+            box-shadow: 5px 5px 0px #fff;
             margin-top: 20px;
             transition: 0.2s;
         }
         
         .btn:hover {
             transform: translate(2px, 2px);
-            box-shadow: 3px 3px 0px #ff4081;
+            box-shadow: 3px 3px 0px #fff;
+            background: #fff; color: #ff4081;
         }
 
         .card {
             background: #fff;
-            border: 3px solid #000;
+            color: #000;
+            border: 3px solid #ff4081;
             padding: 20px;
             margin-top: 50px;
-            box-shadow: 6px 6px 0px #000;
+            box-shadow: 6px 6px 0px #fff;
             transform: rotate(-1deg);
         }
 
         /* Mobile Adjustments */
         @media (max-width: 600px) {
             h1.glitch-name { font-size: 2.5rem; }
-            .f-m, .f-a, .f-r, .f-y { font-size: 2.5rem; } /* Smaller letters on mobile */
+            .floater { font-size: 2rem !important; } /* Smaller floaters on mobile */
         }
     </style>
 </head>
@@ -193,25 +194,26 @@
 
     <div id="opener-container" onclick="openLetter()">
         <div class="envelope"></div>
-        <div class="envelope-text">For Mary 💌 (Click Me)</div>
+        <div class="envelope-text">For Maryam 💌 (Click Me)</div>
     </div>
 
     <div id="main-content">
         
-        <div class="floater f-m">M</div>
-        <div class="floater f-a">A</div>
+        <div class="floater f-m1">M</div>
+        <div class="floater f-a1">A</div>
         <div class="floater f-r">R</div>
         <div class="floater f-y">Y</div>
-        <div class="floater heart-1">💖</div>
-        <div class="floater heart-2">💔</div>
-        <div class="floater heart-3">💘</div>
+        <div class="floater f-a2">A</div>
+        <div class="floater f-m2">M</div>
+
+        <div class="floater princess-1">🧜‍♀️</div> <div class="floater princess-2">🌹</div> <div class="floater princess-3">👠</div> <div class="floater princess-4">👑</div> <div class="floater heart-1">💖</div>
 
         <div class="speech-bubble">
             <h2>Welcome to the CHAOS ZONE! <br> Nothing here makes sense (except that I'm sorry).</h2>
             <div class="decor-block"></div>
         </div>
 
-        <p style="font-family: 'Courier New'; font-weight: bold; margin-bottom: -10px;">Hi...</p>
+        <p style="font-family: 'Courier New'; font-weight: bold; margin-bottom: -10px; color: #ff4081;">Hi...</p>
 
         <h1 class="glitch-name">I M3SS3D UP</h1>
 
@@ -226,7 +228,7 @@
         <button class="btn" onclick="alert('Yay! Coffee is on me! ☕')">&lt; Forgive Me? &gt;</button>
 
         <div class="card">
-            <h3 style="color: #ff0055; text-transform: uppercase; border-bottom: 3px solid #ff0055; display:inline-block;">Peace Offering ☕</h3>
+            <h3 style="color: #ff4081; text-transform: uppercase; border-bottom: 3px solid #ff4081; display:inline-block;">Peace Offering ☕</h3>
             <p>A community-driven request for you to grab coffee (or chai) with me so I can fix this.</p>
         </div>
 

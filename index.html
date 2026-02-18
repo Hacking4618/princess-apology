@@ -1,75 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I'm Sorry 🖤</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Apology Zone</title>
+    <style>
+        /* CORE STYLES & CHAOS VIBE */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Verdana', sans-serif;
+            background-color: #ffe082;
+            /* Creating the diagonal stripe background */
+            background-image: repeating-linear-gradient(
+                45deg,
+                #ffecb3 0,
+                #ffecb3 20px,
+                #fff9c4 20px,
+                #fff9c4 40px
+            );
+            color: #000;
+            overflow-x: hidden;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+        /* NAVIGATION BAR */
+        nav {
+            background: #0d1117;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            border-bottom: 3px solid #000;
+        }
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: black;
-    color: white;
-    text-align: center;
-    overflow-x: hidden;
-}
+        .logo { font-weight: bold; font-size: 1.2rem; }
+        .nav-links a { color: #fff; text-decoration: none; margin-left: 15px; }
 
-/* Center Content */
-.container {
-    padding: 80px 20px;
-}
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
 
-h1 {
-    font-size: 50px;
-    color: #ff4d6d;
-    text-shadow: 0 0 20px #ff4d6d;
-}
+        /* THE WHITE BOX (Welcome to Chaos Zone style) */
+        .speech-bubble {
+            background: #fff;
+            border: 3px solid #000;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 6px 6px 0px #000;
+            display: inline-block;
+            margin-bottom: 30px;
+            position: relative;
+            transform: rotate(-1deg);
+            z-index: 2;
+        }
 
-.message {
-    font-size: 20px;
-    max-width: 600px;
-    margin: 20px auto;
-    line-height: 1.6;
-    color: #ccc;
-}
+        .speech-bubble h2 {
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        
+        /* The little green rectangle decoration */
+        .decor-block {
+            width: 40px;
+            height: 20px;
+            background: #00e676;
+            border: 3px solid #000;
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
 
-/* Button */
-button {
-    padding: 15px 35px;
-    font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    background: #ff4d6d;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 0 20px #ff4d6d;
-    transition: 0.3s;
-}
+        /* GLITCHY HEADER TEXT */
+        h1.glitch-name {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 20px 0;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
 
-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 40px #ff4d6d;
-}
+        /* Pseudo-element for shadow effect */
+        h1.glitch-name::after {
+            content: "I MESSED UP";
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            color: rgba(0,0,0,0.1);
+            z-index: -1;
+        }
 
-/* Floating hearts */
-.heart {
-    position: fixed;
-    bottom: -20px;
-    font-size: 20px;
-    animation: float 6s linear infinite;
-}
+        /* BODY TEXT */
+        p.desc {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 20px auto;
+            max-width: 90%;
+            background: rgba(255,255,255,0.5);
+            padding: 10px;
+            border: 1px dashed #000;
+        }
 
-@keyframes float {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-100vh); opacity: 0; }
-}
-</style>
+        /* BUTTONS */
+        .btn {
+            background: transparent;
+            border: none;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #000;
+            cursor: pointer;
+            border-bottom: 4px solid #00e676;
+            transition: all 0.2s;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background: #00e676;
+            color: white;
+            border-bottom: 4px solid #000;
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        /* FLOATING STICKERS */
+        .sticker {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        .star { top: 150px; right: 20px; color: #ffeb3b; text-shadow: 2px 2px 0 #000; animation-delay: 0.5s;}
+        .boom { top: 350px; right: 50px; color: #ff4081; font-weight: bold; font-family: 'Comic Sans MS', cursive; transform: rotate(-15deg); font-size: 1.5rem; text-shadow: 2px 2px 0 #000;}
+        .explosion { top: 120px; left: 10px; color: #ff5722; font-size: 3rem; animation-delay: 1s;}
+
+        /* BOTTOM CARD (Like 'Accha Chai') */
+        .card {
+            background: #fff;
+            border: 3px solid #000;
+            padding: 20px;
+            margin-top: 50px;
+            text-align: center;
+            box-shadow: 6px 6px 0px #000;
+            transform: rotate(1deg);
+        }
+        
+        .card-header {
+            color: #ff4081;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 4px solid #ff4081;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* KEYFRAMES */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* MOBILE FIXES */
+        @media (max-width: 600px) {
+            h1.glitch-name { font-size: 2.5rem; }
+            .container { margin-top: 20px; }
+            .sticker { display: none; /* Hide stickers on small screens to prevent overlap */ }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h1>I'm Sorry 🖤
+    <nav>
+        <div class="logo">friend_name.exe</div>
+        <div class="nav-links">
+            <a href="#">Status: Sorry</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <div class="sticker explosion">💥</div>
+        <div class="sticker star">⭐</div>
+        <div class="sticker boom">OOPS!</div>
+
+        <div class="speech-bubble">
+            <h2>Welcome to the APOLOGY ZONE! <br> Nothing here makes sense (except that I'm sorry).</h2>
+            <div class="decor-block"></div>
+        </div>
+
+        <p style="font-family: 'Courier New'; font-weight: bold; margin-bottom: -10px;">Hi, I admit...</p>
+
+        <h1 class="glitch-name">I M3SS3D UP</h1>
+
+        <p class="desc">
+            No straight lines. No fake excuses. Just chaos by design. 
+            I made a mistake, and things got messy. 
+            This is not a traditional apology... but I mean it.
+        </p>
+
+        <div class="btn">&lt; Forgive Me? &gt;</div>
+
+        <div class="card">
+            <h3 class="card-header">Peace Offering ☕</h3>
+            <p>A community-driven request for you to grab coffee (or chai) with me so I can fix this.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

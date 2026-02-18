@@ -3,143 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Princess 💖</title>
+<title>I'm Sorry 🖤</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
-    font-family: 'Pacifico', cursive;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    overflow: hidden;
-    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background: black;
     color: white;
-}
-.container {
-    padding-top: 80px;
+    text-align: center;
+    overflow-x: hidden;
 }
 
+/* Center Content */
+.container {
+    padding: 80px 20px;
 }
 
 h1 {
-    font-size: 55px;
-    animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-    from { text-shadow: 0 0 10px white; }
-    to { text-shadow: 0 0 30px #ff004c; }
+    font-size: 50px;
+    color: #ff4d6d;
+    text-shadow: 0 0 20px #ff4d6d;
 }
 
 .message {
-    font-size: 22px;
-    margin: 20px auto;
-    width: 85%;
+    font-size: 20px;
     max-width: 600px;
-    min-height: 60px;
+    margin: 20px auto;
+    line-height: 1.6;
+    color: #ccc;
 }
 
+/* Button */
 button {
     padding: 15px 35px;
     font-size: 18px;
     border: none;
     border-radius: 30px;
-    background: white;
-    color: #ff4d6d;
+    background: #ff4d6d;
+    color: white;
     cursor: pointer;
-    box-shadow: 0 0 20px white;
+    box-shadow: 0 0 20px #ff4d6d;
     transition: 0.3s;
 }
 
 button:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 30px yellow;
-}
-
-img {
-    width: 220px;
-    margin-top: 20px;
-    border-radius: 20px;
-    box-shadow: 0 0 20px white;
+    box-shadow: 0 0 40px #ff4d6d;
 }
 
 /* Floating hearts */
 .heart {
-    position: absolute;
-    bottom: -50px;
-    font-size: 25px;
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
     animation: float 6s linear infinite;
 }
 
 @keyframes float {
     0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-900px); opacity: 0; }
+    100% { transform: translateY(-100vh); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
-    <div class="message" id="typeText"></div>
 
-<img src="https://media.tenor.com/8Q0FZf0dE2EAAAAC/love-anime.gif"
-style="width:250px;border-radius:20px;box-shadow:0 0 20px white;">
-
-<br><br>
-
-<div 
-    <img src="https://media.tenor.com/8Q0FZf0dE2EAAAAC/love-anime.gif" 
-style="width:250px;border-radius:20px;box-shadow:0 0 20px white;">
-    
-    class="container">
-    <h1>I'm Sorry 💖</h1>
-
-    <div class="message" id="typeText"></div>
-
-
-    <br><br>
-
-    <button onclick="playMusic()">Forgive Me 💌</button>
-</div>
-
-<audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
-</audio>
-
-<script>
-/* Typing Effect */
-const text = "My Princess 👑✨ I know I hurt you... But my love for you is pure and forever. Please forgive me 💞";
-let i = 0;
-function typing() {
-    if (i < text.length) {
-        document.getElementById("typeText").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typing, 50);
-    }
-}
-typing();
-
-/* Play Music */
-function playMusic() {
-    document.getElementById("bgMusic").play();
-}
-
-/* Floating Hearts */
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
-}
-
-setInterval(createHeart, 400);
-</script>
-
-</body>
-</html>
+<div class="container">
+    <h1>I'm Sorry 🖤

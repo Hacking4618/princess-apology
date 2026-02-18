@@ -5,25 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Maryam</title>
     <style>
-        /* --- CORE STYLES --- */
+        /* --- CORE CHAOS STYLES (From the Video) --- */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Verdana', sans-serif;
-            /* MAIN BACKGROUND IS NOW BLACK */
-            background-color: #000000; 
-            color: #fff;
+            background-color: #ffe082; /* The Video's Yellow */
+            background-image: repeating-linear-gradient(
+                45deg,
+                #ffecb3 0,
+                #ffecb3 20px,
+                #fff9c4 20px,
+                #fff9c4 40px
+            );
+            color: #000;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* --- THE ENVELOPE OPENER (Kept Pink for contrast reveal) --- */
+        /* --- THE ENVELOPE OPENER --- */
         #opener-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            /* Pink stripes for the opener */
-            background-color: #ffc1e3;
-            background-image: repeating-linear-gradient(45deg, #ffc1e3 0, #ffc1e3 20px, #ffd1ea 20px, #ffd1ea 40px);
+            background: #ffc1e3; /* Pink transition */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -33,227 +37,188 @@
         }
 
         .envelope {
-            width: 150px;
-            height: 100px;
-            background: #fff;
-            position: relative;
-            border: 4px solid #000;
-            cursor: pointer;
-            box-shadow: 8px 8px 0px #000;
+            width: 150px; height: 100px; background: #fff;
+            position: relative; border: 4px solid #000;
+            cursor: pointer; box-shadow: 8px 8px 0px #000;
             transition: transform 0.2s;
         }
-
-        .envelope:hover {
-            transform: scale(1.1) rotate(-3deg);
-        }
-
+        .envelope:hover { transform: scale(1.1) rotate(-3deg); }
         .envelope::after {
-            content: '';
-            position: absolute; top: 0; left: 0; width: 0; height: 0; 
+            content: ''; position: absolute; top: 0; left: 0; width: 0; height: 0; 
             border-left: 71px solid transparent; border-right: 71px solid transparent;
             border-top: 50px solid #000;
         }
-        
         .envelope-text {
-            margin-top: 30px;
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            font-size: 1.2rem;
-            background: #fff; color: #000;
-            padding: 5px 10px;
-            border: 2px solid #000;
-            box-shadow: 4px 4px 0 #000;
+            margin-top: 30px; font-family: 'Courier New', monospace; font-weight: bold;
+            background: #fff; padding: 5px 10px; border: 2px solid #000; box-shadow: 4px 4px 0 #000;
         }
 
-        /* --- MAIN CONTENT (HIDDEN INITIALLY) --- */
+        /* --- MAIN CONTENT --- */
         #main-content {
-            display: none;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.8s ease-out;
-            max-width: 600px;
-            margin: 50px auto;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            z-index: 10;
+            display: none; opacity: 0;
+            transform: scale(0.9); transition: all 0.5s ease-out;
+            max-width: 600px; margin: 40px auto;
+            text-align: center; padding: 20px; position: relative;
         }
 
-        /* --- FLOATING ELEMENTS (Updated for Maryam & Disney) --- */
-        .floater {
-            position: absolute;
-            font-weight: bold;
-            font-family: 'Comic Sans MS', cursive;
-            z-index: -1;
-            opacity: 0.8;
-            animation: floatAnim 4s ease-in-out infinite;
-            text-shadow: 2px 2px 4px #000; /* Shadow to make them pop on black */
-        }
-        
-        /* Positioning M-A-R-Y-A-M */
-        .f-m1 { top: 5%; left: 5%; font-size: 4rem; color: #ff0055; animation-delay: 0s; }
-        .f-a1 { top: 15%; right: 15%; font-size: 3rem; color: #8800cc; animation-delay: 1s; }
-        .f-r { top: 30%; left: 2%; font-size: 5rem; color: #0044ff; animation-delay: 2s; }
-        .f-y { top: 50%; right: 5%; font-size: 4rem; color: #ff6600; animation-delay: 0.5s; }
-        .f-a2 { bottom: 25%; left: 10%; font-size: 3rem; color: #00ff99; animation-delay: 1.2s; }
-        .f-m2 { bottom: 5%; right: 20%; font-size: 4rem; color: #ffff00; animation-delay: 2.2s; }
-        
-        /* Positioning Disney & Hearts */
-        .princess-1 { top: 10%; right: 30%; font-size: 3rem; animation-delay: 1.5s; } /* Mermaid */
-        .princess-2 { top: 40%; left: 15%; font-size: 3rem; animation-delay: 2.5s; } /* Rose */
-        .princess-3 { bottom: 15%; left: 40%; font-size: 3rem; animation-delay: 0.2s; } /* Shoe */
-        .princess-4 { top: 60%; left: -5%; font-size: 3rem; animation-delay: 3s; } /* Crown */
-        .heart-1 { top: 20%; left: 40%; font-size: 2rem; animation-delay: 0.7s; }
-
-        @keyframes floatAnim {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-        }
-
-        /* --- CONTENT STYLING (Adjusted for Black Background) --- */
-        /* The white boxes need neon borders to pop against black */
-        .speech-bubble {
-            background: #fff;
-            color: #000;
-            border: 3px solid #ff4081; /* Neon pink border */
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 6px 6px 0px #fff; /* White shadow */
-            display: inline-block;
-            margin-bottom: 30px;
-            position: relative;
-            transform: rotate(-1deg);
-        }
-        
-        .decor-block {
-            width: 40px; height: 20px; background: #00ff99; border: 3px solid #000;
-            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
-        }
-
-        h1.glitch-name {
+        /* --- THE VIDEO'S GLITCH NAME --- */
+        .glitch-wrapper {
             font-size: 3.5rem;
             font-weight: 900;
-            margin: 20px 0;
-            letter-spacing: -2px;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
             text-transform: uppercase;
-            color: #fff;
-            /* Glitch effect with neon pink and blue split */
-            text-shadow: -3px 0px 0px #ff0055, 3px 0px 0px #0044ff;
+            letter-spacing: -3px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch-wrapper::after {
+            content: "MARYAM";
+            position: absolute; top: 4px; left: 4px;
+            color: rgba(0,0,0,0.1); z-index: -1;
+        }
+
+        /* --- ELEMENTS FROM VIDEO --- */
+        .speech-bubble {
+            background: #fff; border: 3px solid #000; padding: 20px;
+            border-radius: 15px; box-shadow: 6px 6px 0px #000;
+            display: inline-block; margin-bottom: 20px;
+            transform: rotate(-1deg); position: relative; z-index: 2;
+        }
+        .decor-block {
+            width: 40px; height: 15px; background: #00e676; border: 3px solid #000;
+            position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%);
         }
 
         p.desc {
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            background: #fff; /* White background for readability */
-            color: #000;
-            padding: 15px;
-            border: 2px dashed #ff4081;
-            box-shadow: 4px 4px 0px #fff;
-            transform: rotate(1deg);
+            font-family: 'Courier New', monospace; font-size: 1.1rem; line-height: 1.5;
+            background: rgba(255,255,255,0.6); padding: 15px; border: 2px dashed #000;
+            transform: rotate(1deg); margin-top: 20px;
         }
 
+        /* --- FLOATING DISNEY CHARACTERS --- */
+        .floater {
+            position: absolute; font-size: 2.5rem; z-index: 100;
+            animation: floatAnim 4s ease-in-out infinite;
+            filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.2));
+        }
+        .p1 { top: 10%; left: 0%; animation-delay: 0s; } /* Mermaid */
+        .p2 { top: 20%; right: 5%; animation-delay: 1.5s; } /* Shoe */
+        .p3 { bottom: 15%; left: -5%; animation-delay: 0.5s; } /* Crown */
+        .p4 { bottom: 30%; right: -5%; animation-delay: 2s; } /* Rose */
+        .h1 { top: 50%; left: 10%; font-size: 1.5rem; animation-delay: 1s; }
+
+        @keyframes floatAnim {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(8deg); }
+        }
+
+        /* --- BUTTONS & CARDS --- */
         .btn {
-            background: #ff4081;
-            color: #fff;
-            padding: 15px 30px;
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border: 2px solid #fff;
-            box-shadow: 5px 5px 0px #fff;
-            margin-top: 20px;
-            transition: 0.2s;
+            background: transparent; border: none; font-family: 'Courier New', monospace;
+            font-weight: bold; font-size: 1.2rem; cursor: pointer;
+            border-bottom: 4px solid #ff4081; margin-top: 20px; transition: 0.2s;
         }
-        
-        .btn:hover {
-            transform: translate(2px, 2px);
-            box-shadow: 3px 3px 0px #fff;
-            background: #fff; color: #ff4081;
-        }
+        .btn:hover { background: #ff4081; color: white; border-bottom: 4px solid #000; transform: scale(1.1); }
 
         .card {
-            background: #fff;
-            color: #000;
-            border: 3px solid #ff4081;
-            padding: 20px;
-            margin-top: 50px;
-            box-shadow: 6px 6px 0px #fff;
-            transform: rotate(-1deg);
+            background: #fff; border: 3px solid #000; padding: 15px;
+            margin-top: 50px; box-shadow: 6px 6px 0px #000; transform: rotate(-1deg);
         }
 
         /* Mobile Adjustments */
         @media (max-width: 600px) {
-            h1.glitch-name { font-size: 2.5rem; }
-            .floater { font-size: 2rem !important; } /* Smaller floaters on mobile */
+            .glitch-wrapper { font-size: 2.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <div id="opener-container" onclick="openLetter()">
+    <div id="opener-container" onclick="openApology()">
         <div class="envelope"></div>
-        <div class="envelope-text">For Maryam 💌 (Click Me)</div>
+        <div class="envelope-text">For Maryam 💌</div>
     </div>
 
     <div id="main-content">
         
-        <div class="floater f-m1">M</div>
-        <div class="floater f-a1">A</div>
-        <div class="floater f-r">R</div>
-        <div class="floater f-y">Y</div>
-        <div class="floater f-a2">A</div>
-        <div class="floater f-m2">M</div>
-
-        <div class="floater princess-1">🧜‍♀️</div> <div class="floater princess-2">🌹</div> <div class="floater princess-3">👠</div> <div class="floater princess-4">👑</div> <div class="floater heart-1">💖</div>
+        <div class="floater p1">🧜‍♀️</div>
+        <div class="floater p2">👠</div>
+        <div class="floater p3">👑</div>
+        <div class="floater p4">🌹</div>
+        <div class="floater h1">💖</div>
 
         <div class="speech-bubble">
-            <h2>Welcome to the CHAOS ZONE! <br> Nothing here makes sense (except that I'm sorry).</h2>
+            <h2>Welcome to the SORRY ZONE! <br> Nothing here makes sense (except my apology).</h2>
             <div class="decor-block"></div>
         </div>
 
-        <p style="font-family: 'Courier New'; font-weight: bold; margin-bottom: -10px; color: #ff4081;">Hi...</p>
+        <p style="font-family: 'Courier New'; font-weight: bold; margin-bottom: -20px;">Hi...</p>
 
-        <h1 class="glitch-name">I M3SS3D UP</h1>
+        <div class="glitch-wrapper" id="name-display">M@RY#M</div>
 
         <p class="desc">
-            No straight lines. No fixed labels. Just chaos by design.
-            I made a mistake, and things got messy. 
-            This isn't a traditional apology letter... but I mean it.
-            <br><br>
-            <strong>SORRY!</strong>
+            No straight lines. No fake excuses. Just chaos by design.
+            <br>
+            <strong>I M3SS3D UP.</strong>
+            <br>
+            Experiments, mistakes, and occasional breakthroughs. This is not a traditional apology...
         </p>
 
-        <button class="btn" onclick="alert('Yay! Coffee is on me! ☕')">&lt; Forgive Me? &gt;</button>
+        <button class="btn" onclick="alert('Coffee/Chai date locked! ☕')">&lt; Read more &gt;</button>
 
         <div class="card">
-            <h3 style="color: #ff4081; text-transform: uppercase; border-bottom: 3px solid #ff4081; display:inline-block;">Peace Offering ☕</h3>
-            <p>A community-driven request for you to grab coffee (or chai) with me so I can fix this.</p>
+            <h3 style="color: #ff4081; border-bottom: 3px solid #ff4081; display:inline-block;">Project: Peace Offering ☕</h3>
+            <p>A community-driven request for you to grab coffee with me so I can fix this bug in our friendship.</p>
         </div>
 
     </div>
 
     <script>
-        function openLetter() {
+        // 1. OPENER LOGIC
+        function openApology() {
             const opener = document.getElementById('opener-container');
             const content = document.getElementById('main-content');
-
-            // Animate the envelope away
+            
             opener.style.transform = "scale(5) rotate(10deg)";
             opener.style.opacity = "0";
 
-            // Wait a split second, then remove envelope and show content
             setTimeout(() => {
                 opener.style.display = "none";
-                
                 content.style.display = "block";
-                // Small timeout to allow the display:block to apply before animating opacity
                 setTimeout(() => {
                     content.style.opacity = "1";
                     content.style.transform = "scale(1)";
+                    startGlitchEffect(); // Start the name animation
                 }, 50);
             }, 500);
+        }
+
+        // 2. GLITCH TEXT LOGIC (Like the Video)
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&!";
+        const targetName = "MARYAM";
+        
+        function startGlitchEffect() {
+            let iteration = 0;
+            const element = document.getElementById("name-display");
+            let interval = setInterval(() => {
+                element.innerText = element.innerText
+                .split("")
+                .map((letter, index) => {
+                    if(index < iteration) {
+                        return targetName[index];
+                    }
+                    return letters[Math.floor(Math.random() * 26)];
+                })
+                .join("");
+                
+                if(iteration >= targetName.length){ 
+                    clearInterval(interval);
+                    element.innerText = targetName; // Ensure final state is clean
+                }
+                
+                iteration += 1/3; // Speed of decoding
+            }, 50);
         }
     </script>
 

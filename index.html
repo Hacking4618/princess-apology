@@ -180,6 +180,10 @@
         function openApology() {
             const opener = document.getElementById('opener-container');
             const content = document.getElementById('main-content');
+            const music = document.getElementById("bg-music");
+
+    music.volume = 0.35;
+    music.play().catch(err => console.log(err));
             
             opener.style.transform = "scale(5) rotate(10deg)";
             opener.style.opacity = "0";

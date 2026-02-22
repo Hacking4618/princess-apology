@@ -5,105 +5,156 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>I Really Miss You</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<!-- Classic Romantic Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
 }
 
 body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background: radial-gradient(circle at top, #1a1a2e, #0f0f1a, #000);
-    overflow:hidden;
-    color:white;
+    background: linear-gradient(to bottom, #1a1a2e, #16213e, #000);
+    color:#f5f5f5;
+    font-family: 'Playfair Display', serif;
+    scroll-behavior: smooth;
 }
 
-/* Floating glowing particles */
-span{
-    position:absolute;
-    bottom:-150px;
+/* Floating hearts */
+.heart{
+    position:fixed;
     width:20px;
     height:20px;
-    background:rgba(255,255,255,0.05);
-    box-shadow:0 0 10px rgba(255,255,255,0.3),
-               0 0 20px rgba(255,0,150,0.2),
-               0 0 40px rgba(0,200,255,0.2);
+    background:rgba(255,192,203,0.4);
+    transform:rotate(45deg);
+    animation: float 10s linear infinite;
+}
+.heart::before,
+.heart::after{
+    content:'';
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:rgba(255,192,203,0.4);
     border-radius:50%;
-    animation: rise 15s linear infinite;
+}
+.heart::before{ top:-10px; left:0; }
+.heart::after{ left:-10px; top:0; }
+
+@keyframes float{
+    0%{ transform: translateY(100vh) rotate(45deg); opacity:0;}
+    50%{ opacity:1;}
+    100%{ transform: translateY(-10vh) rotate(45deg); opacity:0;}
 }
 
-@keyframes rise{
-    0%{
-        transform:translateY(0) scale(1);
-        opacity:0;
-    }
-    50%{
-        opacity:1;
-    }
-    100%{
-        transform:translateY(-1000px) scale(0.5);
-        opacity:0;
-    }
-}
-
-/* Main Text */
-.container{
+/* Hero Section */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    z-index:10;
+    padding:20px;
 }
 
-h1{
-    font-size:60px;
-    font-weight:600;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    animation: glow 3s ease-in-out infinite alternate;
+.hero h1{
+    font-family: 'Dancing Script', cursive;
+    font-size:55px;
+    margin-bottom:20px;
+    color:#ffb6c1;
 }
 
-p{
-    margin-top:20px;
+.hero p{
+    font-size:22px; /* Medium size */
+    max-width:600px;
+    line-height:1.6;
+    opacity:0.85;
+}
+
+/* Letter Section */
+.letter{
+    padding:80px 20px;
+    max-width:700px;
+    margin:auto;
+    line-height:1.9;
     font-size:18px;
-    font-weight:300;
-    opacity:0.7;
 }
 
-@keyframes glow{
-    from{
-        text-shadow:0 0 10px #ff4da6,
-                    0 0 20px #ff4da6,
-                    0 0 30px #ff4da6;
-    }
-    to{
-        text-shadow:0 0 20px #00d4ff,
-                    0 0 40px #00d4ff,
-                    0 0 60px #00d4ff;
-    }
+.letter p{
+    margin-bottom:30px;
+    opacity:0.9;
+}
+
+/* Scroll indicator */
+.scroll-down{
+    margin-top:40px;
+    font-size:14px;
+    opacity:0.7;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{ transform:translateY(0);}
+    50%{ transform:translateY(10px);}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="hero">
     <h1>I Really Miss You</h1>
-    <p>Every night feels incomplete without you.</p>
+    <p>
+        It's strange how silence feels louder when you're not here.
+        Every little thing reminds me of you.
+    </p>
+    <div class="scroll-down">Scroll Down ↓</div>
 </div>
 
-<!-- Floating elements -->
+<div class="letter">
+    <p>
+        My love, every day without you feels incomplete.
+        The world continues moving, but something inside me pauses,
+        waiting for your voice, your smile, your presence.
+    </p>
+
+    <p>
+        I miss the way you laugh at the smallest things,
+        the way your eyes light up when you talk about your dreams.
+        Even the quiet moments with you meant everything to me.
+    </p>
+
+    <p>
+        Nights feel longer now. I look at the stars and wonder
+        if you're looking at the same sky.
+        Somehow that thought makes me feel closer to you.
+    </p>
+
+    <p>
+        If I could hold your hand right now,
+        I would never let it go so easily again.
+        You are not just someone I love —
+        you are the part of my heart that feels like home.
+    </p>
+
+    <p>
+        Until we meet again,
+        know that I carry you in every heartbeat,
+        in every breath,
+        and in every silent prayer.
+    </p>
+</div>
+
 <script>
-for(let i=0;i<40;i++){
-    let bubble = document.createElement("span");
-    bubble.style.left = Math.random() * window.innerWidth + "px";
-    bubble.style.animationDuration = (10 + Math.random()*10) + "s";
-    bubble.style.width = bubble.style.height = (10 + Math.random()*30) + "px";
-    document.body.appendChild(bubble);
+for(let i=0;i<15;i++){
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (5 + Math.random()*5) + "s";
+    document.body.appendChild(heart);
 }
 </script>
 

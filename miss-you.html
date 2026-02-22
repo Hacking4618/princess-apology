@@ -3,174 +3,220 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I Really Miss You</title>
+<title>For Someone Special</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
-    background: radial-gradient(circle at top, #1a1a2e, #0f0f1a, #000);
+    background:black;
     color:white;
-    font-family:'Playfair Display', serif;
+    font-family:'Playfair Display',serif;
     overflow-x:hidden;
     scroll-behavior:smooth;
 }
 
-/* Floating Glowing Particles */
+/* PASSWORD SCREEN */
+#lockScreen{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:9999;
+}
+#lockScreen input{
+    padding:12px;
+    border:none;
+    outline:none;
+    font-size:16px;
+}
+#lockScreen button{
+    padding:10px 20px;
+    margin-top:10px;
+    border:none;
+    background:#ff4da6;
+    color:white;
+    cursor:pointer;
+}
+
+/* STAR SKY */
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{
+    from{opacity:0.2;}
+    to{opacity:1;}
+}
+
+/* FLOATING PARTICLES */
 .particle{
     position:absolute;
-    bottom:-100px;
-    width:15px;
-    height:15px;
-    background:rgba(255,255,255,0.05);
+    bottom:-50px;
+    width:10px;
+    height:10px;
     border-radius:50%;
-    box-shadow:0 0 10px rgba(255,192,203,0.4),
-               0 0 20px rgba(255,105,180,0.3),
-               0 0 40px rgba(255,255,255,0.2);
-    animation: floatUp linear infinite;
+    background:rgba(255,255,255,0.1);
+    box-shadow:0 0 10px pink;
+    animation:floatUp linear infinite;
 }
-
 @keyframes floatUp{
-    0%{ transform:translateY(0) scale(1); opacity:0;}
-    50%{ opacity:1;}
-    100%{ transform:translateY(-120vh) scale(0.5); opacity:0;}
+    0%{transform:translateY(0);opacity:0;}
+    50%{opacity:1;}
+    100%{transform:translateY(-120vh);opacity:0;}
 }
 
-/* Hero Section */
-.hero{
-    height:100vh;
+section{
+    min-height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    padding:30px;
     text-align:center;
-    padding:20px;
-    position:relative;
-    z-index:10;
 }
 
-.hero h1{
-    font-family:'Dancing Script', cursive;
-    font-size:55px;
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:50px;
     color:#ffb6c1;
-    margin-bottom:15px;
 }
 
-.hero p{
-    font-size:22px;
+.typewriter{
+    font-size:20px;
     max-width:600px;
-    line-height:1.6;
-    opacity:0.85;
-}
-
-.love-symbols{
     margin-top:20px;
-    font-size:28px;
-    letter-spacing:10px;
-    animation: glow 2s ease-in-out infinite alternate;
+    line-height:1.7;
 }
 
-@keyframes glow{
-    from{ text-shadow:0 0 10px #ff4da6; }
-    to{ text-shadow:0 0 25px #ff99cc; }
+.photo-section img{
+    max-width:300px;
+    border-radius:15px;
+    margin-top:20px;
+    box-shadow:0 0 20px pink;
 }
 
-.scroll-down{
-    margin-top:40px;
-    font-size:14px;
-    opacity:0.7;
-    animation:bounce 2s infinite;
+/* ENDING EFFECT */
+#ending{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:black;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+    color:#ff4da6;
+    animation:fadeIn 3s forwards;
 }
-
-@keyframes bounce{
-    0%,100%{ transform:translateY(0);}
-    50%{ transform:translateY(8px);}
-}
-
-/* Letter Section */
-.letter{
-    max-width:750px;
-    margin:auto;
-    padding:80px 20px;
-    line-height:1.9;
-    font-size:18px;
-    position:relative;
-    z-index:10;
-}
-
-.letter p{
-    margin-bottom:30px;
-    opacity:0.9;
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
 }
 </style>
 </head>
-
 <body>
 
-<div class="hero">
-    <h1>I Really Miss You</h1>
-    <p>
-        Even in a room full of noise, my heart still searches for you.
-        The silence without you feels louder than anything.
-    </p>
-
-    <div class="love-symbols">
-        ❤️ ✨ 💌 🌙 💖 ✨
-    </div>
-
-    <div class="scroll-down">Scroll Down ↓</div>
+<!-- PASSWORD LOCK -->
+<div id="lockScreen">
+    <h2>Enter Secret Code 💌</h2>
+    <input type="password" id="password" placeholder="Enter password">
+    <button onclick="unlock()">Unlock</button>
 </div>
 
-<div class="letter">
-    <p>
-        My love ❤️, every single day feels incomplete without you.
-        I never realized how deeply someone could become a part of my soul
-        until distance made me understand your value.
-    </p>
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="YOUR_MUSIC_LINK.mp3" type="audio/mp3">
+</audio>
 
-    <p>
-        I miss your smile, the softness in your voice,
-        and the way you make ordinary moments feel magical ✨.
-        You were never just a person in my life —
-        you became my comfort, my peace, my home.
-    </p>
+<!-- MAIN CONTENT -->
+<section>
+    <h1 id="nameTitle"></h1>
+    <div class="typewriter" id="typeText"></div>
+</section>
 
-    <p>
-        Sometimes I close my eyes and imagine you next to me,
-        holding my hand 💕.
-        Even the thought of you makes my heart beat softer,
-        calmer, warmer.
-    </p>
+<section class="photo-section">
+    <h1>Our Memories 📷</h1>
+    <input type="file" accept="image/*" onchange="loadPhoto(event)">
+    <img id="photoPreview">
+</section>
 
-    <p>
-        The nights are longer now 🌙,
-        and I whisper your name in silent prayers.
-        If love had a shape, it would look exactly like you.
-    </p>
+<section>
+    <h1>Forever & Always ❤️</h1>
+    <p>Scroll down for something special...</p>
+    <button onclick="showEnding()">Final Surprise</button>
+</section>
 
-    <p>
-        Until we meet again,
-        know that I carry you in every heartbeat,
-        every breath,
-        and every dream 💖.
-    </p>
-</div>
+<div id="ending">I Will Always Love You 💖</div>
 
 <script>
-// Create Floating Particles
+// ===== SETTINGS =====
+const PASSWORD = "1234";   // CHANGE PASSWORD
+const herName = "My Love"; // CHANGE NAME
+
+const message = `Every moment without you feels incomplete.
+I miss your smile, your warmth, your presence.
+You are not just someone I love —
+you are my heart, my peace, my forever.`;
+
+// ===== PASSWORD FUNCTION =====
+function unlock(){
+    if(document.getElementById("password").value === PASSWORD){
+        document.getElementById("lockScreen").style.display="none";
+        document.getElementById("bgMusic").play();
+    }else{
+        alert("Wrong Password 💔");
+    }
+}
+
+// ===== INSERT NAME =====
+document.getElementById("nameTitle").innerText = "For " + herName + " 💖";
+
+// ===== TYPEWRITER =====
+let i=0;
+function typeEffect(){
+    if(i < message.length){
+        document.getElementById("typeText").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeEffect,40);
+    }
+}
+typeEffect();
+
+// ===== STARS =====
+for(let i=0;i<100;i++){
+    let star=document.createElement("div");
+    star.classList.add("star");
+    star.style.top=Math.random()*100+"vh";
+    star.style.left=Math.random()*100+"vw";
+    document.body.appendChild(star);
+}
+
+// ===== PARTICLES =====
 for(let i=0;i<40;i++){
-    let particle = document.createElement("div");
-    particle.classList.add("particle");
-    particle.style.left = Math.random()*100 + "vw";
-    particle.style.animationDuration = (8 + Math.random()*8) + "s";
-    particle.style.width = particle.style.height = (10 + Math.random()*20) + "px";
-    document.body.appendChild(particle);
+    let p=document.createElement("div");
+    p.classList.add("particle");
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=(5+Math.random()*5)+"s";
+    document.body.appendChild(p);
+}
+
+// ===== PHOTO PREVIEW =====
+function loadPhoto(event){
+    document.getElementById("photoPreview").src = URL.createObjectURL(event.target.files[0]);
+}
+
+// ===== ENDING =====
+function showEnding(){
+    document.getElementById("ending").style.display="flex";
 }
 </script>
 

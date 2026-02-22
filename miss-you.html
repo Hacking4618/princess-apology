@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>I Really Miss You</title>
 
-<!-- Classic Romantic Font -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
 <style>
@@ -16,37 +15,31 @@
 }
 
 body{
-    background: linear-gradient(to bottom, #1a1a2e, #16213e, #000);
-    color:#f5f5f5;
-    font-family: 'Playfair Display', serif;
-    scroll-behavior: smooth;
+    background: radial-gradient(circle at top, #1a1a2e, #0f0f1a, #000);
+    color:white;
+    font-family:'Playfair Display', serif;
+    overflow-x:hidden;
+    scroll-behavior:smooth;
 }
 
-/* Floating hearts */
-.heart{
-    position:fixed;
-    width:20px;
-    height:20px;
-    background:rgba(255,192,203,0.4);
-    transform:rotate(45deg);
-    animation: float 10s linear infinite;
-}
-.heart::before,
-.heart::after{
-    content:'';
+/* Floating Glowing Particles */
+.particle{
     position:absolute;
-    width:20px;
-    height:20px;
-    background:rgba(255,192,203,0.4);
+    bottom:-100px;
+    width:15px;
+    height:15px;
+    background:rgba(255,255,255,0.05);
     border-radius:50%;
+    box-shadow:0 0 10px rgba(255,192,203,0.4),
+               0 0 20px rgba(255,105,180,0.3),
+               0 0 40px rgba(255,255,255,0.2);
+    animation: floatUp linear infinite;
 }
-.heart::before{ top:-10px; left:0; }
-.heart::after{ left:-10px; top:0; }
 
-@keyframes float{
-    0%{ transform: translateY(100vh) rotate(45deg); opacity:0;}
+@keyframes floatUp{
+    0%{ transform:translateY(0) scale(1); opacity:0;}
     50%{ opacity:1;}
-    100%{ transform: translateY(-10vh) rotate(45deg); opacity:0;}
+    100%{ transform:translateY(-120vh) scale(0.5); opacity:0;}
 }
 
 /* Hero Section */
@@ -58,47 +51,62 @@ body{
     align-items:center;
     text-align:center;
     padding:20px;
+    position:relative;
+    z-index:10;
 }
 
 .hero h1{
-    font-family: 'Dancing Script', cursive;
+    font-family:'Dancing Script', cursive;
     font-size:55px;
-    margin-bottom:20px;
     color:#ffb6c1;
+    margin-bottom:15px;
 }
 
 .hero p{
-    font-size:22px; /* Medium size */
+    font-size:22px;
     max-width:600px;
     line-height:1.6;
     opacity:0.85;
 }
 
+.love-symbols{
+    margin-top:20px;
+    font-size:28px;
+    letter-spacing:10px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px #ff4da6; }
+    to{ text-shadow:0 0 25px #ff99cc; }
+}
+
+.scroll-down{
+    margin-top:40px;
+    font-size:14px;
+    opacity:0.7;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{ transform:translateY(0);}
+    50%{ transform:translateY(8px);}
+}
+
 /* Letter Section */
 .letter{
-    padding:80px 20px;
-    max-width:700px;
+    max-width:750px;
     margin:auto;
+    padding:80px 20px;
     line-height:1.9;
     font-size:18px;
+    position:relative;
+    z-index:10;
 }
 
 .letter p{
     margin-bottom:30px;
     opacity:0.9;
-}
-
-/* Scroll indicator */
-.scroll-down{
-    margin-top:40px;
-    font-size:14px;
-    opacity:0.7;
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce{
-    0%,100%{ transform:translateY(0);}
-    50%{ transform:translateY(10px);}
 }
 </style>
 </head>
@@ -108,53 +116,61 @@ body{
 <div class="hero">
     <h1>I Really Miss You</h1>
     <p>
-        It's strange how silence feels louder when you're not here.
-        Every little thing reminds me of you.
+        Even in a room full of noise, my heart still searches for you.
+        The silence without you feels louder than anything.
     </p>
+
+    <div class="love-symbols">
+        ❤️ ✨ 💌 🌙 💖 ✨
+    </div>
+
     <div class="scroll-down">Scroll Down ↓</div>
 </div>
 
 <div class="letter">
     <p>
-        My love, every day without you feels incomplete.
-        The world continues moving, but something inside me pauses,
-        waiting for your voice, your smile, your presence.
+        My love ❤️, every single day feels incomplete without you.
+        I never realized how deeply someone could become a part of my soul
+        until distance made me understand your value.
     </p>
 
     <p>
-        I miss the way you laugh at the smallest things,
-        the way your eyes light up when you talk about your dreams.
-        Even the quiet moments with you meant everything to me.
+        I miss your smile, the softness in your voice,
+        and the way you make ordinary moments feel magical ✨.
+        You were never just a person in my life —
+        you became my comfort, my peace, my home.
     </p>
 
     <p>
-        Nights feel longer now. I look at the stars and wonder
-        if you're looking at the same sky.
-        Somehow that thought makes me feel closer to you.
+        Sometimes I close my eyes and imagine you next to me,
+        holding my hand 💕.
+        Even the thought of you makes my heart beat softer,
+        calmer, warmer.
     </p>
 
     <p>
-        If I could hold your hand right now,
-        I would never let it go so easily again.
-        You are not just someone I love —
-        you are the part of my heart that feels like home.
+        The nights are longer now 🌙,
+        and I whisper your name in silent prayers.
+        If love had a shape, it would look exactly like you.
     </p>
 
     <p>
         Until we meet again,
         know that I carry you in every heartbeat,
-        in every breath,
-        and in every silent prayer.
+        every breath,
+        and every dream 💖.
     </p>
 </div>
 
 <script>
-for(let i=0;i<15;i++){
-    let heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.style.left = Math.random()*100 + "vw";
-    heart.style.animationDuration = (5 + Math.random()*5) + "s";
-    document.body.appendChild(heart);
+// Create Floating Particles
+for(let i=0;i<40;i++){
+    let particle = document.createElement("div");
+    particle.classList.add("particle");
+    particle.style.left = Math.random()*100 + "vw";
+    particle.style.animationDuration = (8 + Math.random()*8) + "s";
+    particle.style.width = particle.style.height = (10 + Math.random()*20) + "px";
+    document.body.appendChild(particle);
 }
 </script>
 

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Question For You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0f0f1a, #000);
+  color:white;
+  overflow:hidden;
+}
+
+/* STAR BACKGROUND */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+/* MAIN SECTION */
+.container{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  animation:fadeIn 2s ease forwards;
+}
+
+h1{
+  font-family:'Playfair Display', serif;
+  font-size:40px;
+  margin-bottom:20px;
+  opacity:0;
+  animation:slideUp 2s ease forwards;
+}
+
+p{
+  max-width:500px;
+  font-size:18px;
+  line-height:1.7;
+  opacity:0;
+  animation:slideUp 2s ease forwards;
+  animation-delay:1s;
+}
+
+.buttons{
+  margin-top:30px;
+  opacity:0;
+  animation:slideUp 2s ease forwards;
+  animation-delay:2s;
+}
+
+button{
+  padding:12px 25px;
+  margin:10px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+#yes{
+  background:#ff4da6;
+  color:white;
+}
+
+#yes:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 20px #ff4da6;
+}
+
+#no{
+  background:#333;
+  color:white;
+  position:relative;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+@keyframes slideUp{
+  from{transform:translateY(40px);opacity:0;}
+  to{transform:translateY(0);opacity:1;}
+}
+
+/* FINAL SCREEN */
+#final{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  opacity:0;
+  pointer-events:none;
+  transition:1.5s ease;
+}
+
+#final h2{
+  font-family:'Playfair Display', serif;
+  font-size:45px;
+  color:#ff4da6;
+}
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<div class="container">
+  <h1>Will You Be Mine Forever? 💍</h1>
+  <p>
+    From the moment you walked into my life,
+    everything changed.
+    You became my peace, my happiness,
+    my forever.
+  </p>
+
+  <div class="buttons">
+    <button id="yes">Yes ❤️</button>
+    <button id="no">No 🙈</button>
+  </div>
+</div>
+
+<div id="final">
+  <h2>She Said YES! ❤️✨</h2>
+  <p>Our forever begins now.</p>
+</div>
+
+<script>
+/* STAR ANIMATION */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars = [];
+for(let i=0;i<200;i++){
+  stars.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    radius:Math.random()*1.5,
+    alpha:Math.random()
+  });
+}
+
+function drawStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  stars.forEach(star=>{
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.radius, 0, Math.PI*2);
+    ctx.fillStyle="white";
+    ctx.globalAlpha=star.alpha;
+    ctx.fill();
+  });
+  requestAnimationFrame(drawStars);
+}
+drawStars();
+
+/* YES BUTTON */
+document.getElementById("yes").onclick=function(){
+  document.getElementById("final").style.opacity="1";
+  document.getElementById("final").style.pointerEvents="all";
+};
+
+/* NO BUTTON RUN AWAY */
+const noBtn=document.getElementById("no");
+noBtn.addEventListener("mouseover",()=>{
+  noBtn.style.position="absolute";
+  noBtn.style.left=Math.random()*80+"%";
+  noBtn.style.top=Math.random()*80+"%";
+});
+
+/* DISABLE BACK BUTTON */
+history.pushState(null,null,location.href);
+window.onpopstate=function(){
+  history.go(1);
+};
+</script>
+
+</body>
+</html>

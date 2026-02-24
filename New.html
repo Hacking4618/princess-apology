@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 80px 20px;
+}
+
+h1 {
+    color: #D4AF37;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+.fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s ease;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.gallery img {
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 0.4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+button {
+    padding: 12px 30px;
+    margin: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: #D4AF37;
+    color: black;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: white;
+}
+
+#proposal {
+    font-size: 32px;
+    margin-top: 40px;
+    color: #D4AF37;
+}
+
+#popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#popup h2 {
+    color: #D4AF37;
+    font-size: 40px;
+}
+
+audio {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Opening -->
+<section class="fade">
+    <h1>For Emily ❤️</h1>
+    <p>I have something important to ask you...</p>
+</section>
+
+<!-- Message -->
+<section class="fade">
+    <p>
+        From the day we met, my life changed in ways I never expected.  
+        You are my peace, my happiness, and my forever.  
+        Every memory with you is my favorite one.  
+        And today, I want to create the most beautiful one yet.
+    </p>
+</section>
+
+<!-- Gallery -->
+<section class="fade">
+    <h1>Our Favorite Moments</h1>
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2">
+        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
+    </div>
+</section>
+
+<!-- Proposal -->
+<section class="fade">
+    <div id="proposal">Will You Marry Me?</div>
+    <button onclick="showPopup()">YES 💍</button>
+    <button onclick="showPopup()">YES ❤️</button>
+</section>
+
+<!-- Popup -->
+<div id="popup">
+    <h2>She Said YES! ❤️</h2>
+    <p>This is the beginning of our forever.</p>
+</div>
+
+<!-- Music -->
+<audio controls autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<script>
+function showPopup() {
+    document.getElementById("popup").style.display = "flex";
+}
+
+// Fade-in animation
+const faders = document.querySelectorAll('.fade');
+window.addEventListener('scroll', () => {
+    faders.forEach(fade => {
+        const rect = fade.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100) {
+            fade.classList.add('show');
+        }
+    });
+});
+</script>
+
+</body>
+</html>

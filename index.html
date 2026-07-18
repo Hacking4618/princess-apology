@@ -5,31 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Name</title>
     <style>
-        :root {
-            /* LIGHT THEME (Base) */
-            --bg-color: #ffe082;
-            --stripe-1: #ffecb3;
-            --stripe-2: #fff9c4;
-            --text-color: #000;
-            --box-bg: #fff;
-            --box-border: #000;
-            --accent: #ff4081;
+        :root{
+    --bg-color:#0b0611;
+    --stripe-1:#16101d;
+    --stripe-2:#0b0611;
+
+    --text-color:#ffe6f2;
+
+    --box-bg:#1a0f1f;
+    --box-border:#ff6fae;
+
+    --accent:#ff4d94;
         }
 
         body.dark-mode {
-            /* DARK THEME (Glitch State) */
-    --bg-color: #0b0611;
-    --stripe-1: #16101d;
-    --stripe-2: #0b0611;
+    --bg-color:#ffe082;
+    --stripe-1:#ffecb3;
+    --stripe-2:#fff9c4;
 
-    --text-color: #ffe6f2;
+    --text-color:#000;
 
-    --box-bg: #1a0f1f;
-    --box-border: #ff6fae;
+    --box-bg:#fff;
+    --box-border:#000;
 
-    --accent: #ff4d94;
+    --accent:#ff4081;
+}
              /* Green accent in dark mode */
-        }
+    
 
         /* --- CORE STYLES --- */
         body {
@@ -286,6 +288,10 @@ music.play();
     content.style.opacity = "1";
     content.style.transform = "scale(1)";
 
+            setTimeout(()=>{
+    document.body.classList.add("dark-mode");
+},1200);
+            
     startNameScramble();
 
     setTimeout(() => {

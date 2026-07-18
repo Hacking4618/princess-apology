@@ -280,15 +280,22 @@ music.play();
         }
 
         // 3. BACKGROUND GLITCH (THE FLICKER EFFECT)
-        function startBackgroundGlitch(){
-
+        
     function triggerGlitch(){
 
         document.body.classList.add("dark-mode");
 
-        setTimeout(()=>{
-            document.body.classList.remove("dark-mode");
-        },500);
+        setTimeout(() => {
+    content.style.opacity = "1";
+    content.style.transform = "scale(1)";
+
+    startNameScramble();
+
+    setTimeout(() => {
+        document.body.classList.add("dark-mode");
+    }, 1500);
+
+}, 50);
 
         setTimeout(triggerGlitch,3500+Math.random()*2500);
     }

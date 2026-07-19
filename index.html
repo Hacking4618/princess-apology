@@ -17,8 +17,34 @@
 
     --accent:#ff4d94;
         }
+        :root{
+    --bg-color:#0b0611;
+    --stripe-1:#16101d;
+    --stripe-2:#0b0611;
 
-        body.dark-mode {
+    --text-color:#ffe6f2;
+
+    --box-bg:#1a0f1f;
+    --box-border:#ff6fae;
+
+    --accent:#ff4d94;
+        }
+
+        body.dark-mode 
+        body.yellow-theme{
+
+    --bg-color:#ffe082;
+    --stripe-1:#ffecb3;
+    --stripe-2:#fff9c4;
+
+    --text-color:#000;
+
+    --box-bg:#fff;
+    --box-border:#000;
+
+    --accent:#ff4081;
+
+        }{
     --bg-color:#ffe082;
     --stripe-1:#ffecb3;
     --stripe-2:#fff9c4;
@@ -181,7 +207,17 @@
 
         { .glitch-wrapper { font-size: 2.8rem; } }
 /* Paste the Gallery CSS here */
+:root{
+   ...
+}
 
+body.dark-mode{
+   ...
+}
+
+body.yellow-theme{
+   ...
+}
 .gallery{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
@@ -252,7 +288,7 @@
 </button>
         <div id="gallery" style="display:none; margin-top:40px;">
 
-    <h2>Our Beautiful Memories ❤️</h2>
+    <h2>My Beloved Fatime wifey❤️</h2>
 
     <div class="gallery">
 
@@ -324,6 +360,13 @@ music.play();
                 iteration += 1/3;
             }, 50);
         }
+        document.body.classList.add("dark-mode");
+        content.style.opacity="1";
+content.style.transform="scale(1)";
+
+startNameScramble();
+
+document.body.classList.add("dark-mode");
 
         // 3. BACKGROUND GLITCH (THE FLICKER EFFECT)
         setTimeout(() => {
@@ -342,21 +385,17 @@ setTimeout(() => {
 
 function openGallery(){
 
+    document.body.classList.remove("dark-mode");
+
+    document.body.classList.add("yellow-theme");
+
     const gallery=document.getElementById("gallery");
 
-    if(gallery.style.display==="none"){
+    gallery.style.display="block";
 
-        gallery.style.display="block";
-
-        gallery.scrollIntoView({
-            behavior:"smooth"
-        });
-
-    }else{
-
-        gallery.style.display="none";
-
-    }
+    gallery.scrollIntoView({
+        behavior:"smooth"
+    });
 
 }
         

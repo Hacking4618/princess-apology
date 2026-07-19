@@ -179,11 +179,7 @@
         0 0 50px rgba(255,77,148,.15);
 }
 
-        @media (max-width: 600px) { .glitch-wrapper { font-size: 2.8rem; } }
-        .card {
-   ...
-}
-
+        { .glitch-wrapper { font-size: 2.8rem; } }
 /* Paste the Gallery CSS here */
 
 .gallery{
@@ -260,13 +256,13 @@
 
     <div class="gallery">
 
-        <img src="photo1.jpg">
+        <img src="IMG-20260507-WA0030.jpg">
 
-        <img src="photo2.jpg">
+        <img src="IMG_20260509_040509_463.jpg">
 
-        <img src="photo3.jpg">
+        <img src="IMG-20260529-WA0003.jpg">
 
-        <img src="photo4.jpg">
+        <img src="IMG-20260529-WA0008.jpg">
 
     </div>
 
@@ -330,26 +326,17 @@ music.play();
         }
 
         // 3. BACKGROUND GLITCH (THE FLICKER EFFECT)
-        
-    
         setTimeout(() => {
-    content.style.opacity = "1";
-    content.style.transform = "scale(1)";
+    document.body.classList.add("dark-mode");
+}, 1200);
+        content.style.opacity = "1";
+content.style.transform = "scale(1)";
 
-            setTimeout(()=>{
+startNameScramble();
+
+setTimeout(() => {
     document.body.classList.add("dark-mode");
 },1200);
-            
-    startNameScramble();
-
-    setTimeout(() => {
-        document.body.classList.add("dark-mode");
-    }, 1500);
-
-}, 50);
-        function startBackgroundGlitch(){
-   ...
-}
 
 // Paste here 👇
 

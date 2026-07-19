@@ -180,6 +180,36 @@
 }
 
         @media (max-width: 600px) { .glitch-wrapper { font-size: 2.8rem; } }
+        .card {
+   ...
+}
+
+/* Paste the Gallery CSS here */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:15px;
+    border:3px solid var(--accent);
+    cursor:pointer;
+    transition:.4s;
+    box-shadow:0 0 15px rgba(255,77,148,.4);
+}
+
+.gallery img:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 30px rgba(255,77,148,.8);
+}
+
+@media (max-width:600px){
+    ...
+}
     </style>
 </head>
 <body>
@@ -221,8 +251,26 @@
             ki hamdono ka jld se nikah hojaye (In Sha Allah) aur hamare dher saare bache ho aur hamdono hamesha saath rahen, Aur Thanks Fatima meri zindagi main aane ke liye mujhe se itna pyaar krne ke liye bs ese hi mere 
             saath rehna aur mujhe se pyaar krte rehna, Love you sooooo...... Muchhhh...... meri kuchu puchu Gadhi 🎀💖💕💓.
         </p>
+<button class="btn" onclick="openGallery()">
+    ❤️ Read More ❤️
+</button>
+        <div id="gallery" style="display:none; margin-top:40px;">
 
-        <button class="btn" onclick="alert('Coffee/Chai date locked! ☕')">&lt; Read more &gt;</button>
+    <h2>Our Beautiful Memories ❤️</h2>
+
+    <div class="gallery">
+
+        <img src="photo1.jpg">
+
+        <img src="photo2.jpg">
+
+        <img src="photo3.jpg">
+
+        <img src="photo4.jpg">
+
+    </div>
+
+        </div>
 
         <div class="card">
             <h3 style="color: var(--accent); border-bottom: 3px solid var(--accent); display:inline-block;">Project: Peace Offering ☕</h3>
@@ -299,6 +347,31 @@ music.play();
     }, 1500);
 
 }, 50);
+        function startBackgroundGlitch(){
+   ...
+}
+
+// Paste here 👇
+
+function openGallery(){
+
+    const gallery=document.getElementById("gallery");
+
+    if(gallery.style.display==="none"){
+
+        gallery.style.display="block";
+
+        gallery.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    }else{
+
+        gallery.style.display="none";
+
+    }
+
+}
         
     </script>
 
